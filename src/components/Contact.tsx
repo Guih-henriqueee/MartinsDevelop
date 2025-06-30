@@ -14,7 +14,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você pode integrar com um serviço como Formspree, EmailJS, etc.
     console.log("Formulário enviado:", formData);
     alert("Mensagem enviada com sucesso!");
     setFormData({ nome: "", email: "", mensagem: "" });

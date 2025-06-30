@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ImageOff, ArrowLeftRight } from "lucide-react"; // ou qualquer outro ícone que use
+import { ImageOff, ArrowLeftRight } from "lucide-react"; 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
