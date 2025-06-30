@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Github, Linkedin, Moon, Sun } from "lucide-react";
+import { Github, Linkedin, Moon, Sun, Menu } from "lucide-react";
 
 const Header = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -12,13 +13,28 @@ const Header = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className="relative flex flex-col items-center text-left py-16 bg-gradient text-base-content ">
-      {/* Navbar fixada no topo */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-neutral  backdrop-blur shadow-md">
+    <header className="relative bg-gradient-to-b from-base-100 to-transparent text-base-content">
+      {/* Navbar fixa no topo */}
+      <div className="fixed top-0 left-0 w-full z-50 bg-neutral backdrop-blur shadow-md">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          {/* Navegação */}
-          <nav className="flex space-x-6 text-neutral-content">
+          {/* Botão de menu para mobile */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="btn btn-ghost btn-sm text-neutral-content"
+              aria-label="Abrir menu"
+            >
+              <Menu size={20} />
+            </button>
+          </div>
+
+          {/* Navegação padrão (esconde no mobile) */}
+          <nav className="hidden md:flex space-x-6 text-neutral-content">
             <a href="#destaques" className="hover:text-primary-content transition">Destaques</a>
             <a href="#projetos" className="hover:text-primary-content transition">Projetos</a>
             <a href="#skills" className="hover:text-primary-content transition">Skills</a>
@@ -33,36 +49,42 @@ const Header = () => {
             aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
           >
             {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
-            {theme === "light" ? "" : ""}
           </button>
         </div>
+
+        {/* Menu dropdown no mobile */}
+        {isMenuOpen && (
+          <div className="md:hidden px-4 pb-4 bg-neutral text-neutral-content space-y-2">
+            <a href="#destaques" onClick={toggleMenu} className="block hover:text-primary-content">Destaques</a>
+            <a href="#projetos" onClick={toggleMenu} className="block hover:text-primary-content">Projetos</a>
+            <a href="#skills" onClick={toggleMenu} className="block hover:text-primary-content">Skills</a>
+            <a href="#certificacoes" onClick={toggleMenu} className="block hover:text-primary-content">Certificações</a>
+            <a href="#contato" onClick={toggleMenu} className="block hover:text-primary-content">Contato</a>
+          </div>
+        )}
       </div>
 
       {/* Conteúdo principal */}
-      <div className="flex flex-col md:flex-row items-center max-w-6xl w-full px-4 gap-12 pt-10">
+      <div className="flex flex-col md:flex-row items-center max-w-6xl w-full px-4 gap-12 pt-24 pb-10 mx-auto">
         {/* Texto */}
-        <div className="flex-1">
+        <div className="flex-1 text-center md:text-left">
           <h1 className="text-4xl font-bold text-primary mb-2">Guilherme Martins</h1>
           <p className="text-lg font-semibold text-primary-content mb-4">
             Desenvolvedor FullStack
           </p>
-          <p className="text-base text-primary-content mb-6 max-w-md leading-relaxed">
+          <p className="text-base text-primary-content mb-6 leading-relaxed max-w-md mx-auto md:mx-0">
             Analista de Desenvolvimento de Sistemas | Consultor de Integrações e Ecommerce |
             Desenvolvimento de Aplicações e Consultoria de SAP Business One.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex justify-center md:justify-start flex-wrap gap-4">
             <a href="#projetos" className="btn btn-primary">Projetos</a>
-            <a
-              href="/curriculo.pdf"
-              download
-              className="btn btn-outline btn-primary"
-            >
+            <a href="/curriculo.pdf" download className="btn btn-outline btn-primary">
               Download Currículo
             </a>
           </div>
 
           {/* Redes Sociais */}
-          <div className="flex mr-10 gap-5 mt-5 text-primary">
+          <div className="flex justify-center md:justify-start gap-5 mt-6 text-primary">
             <a
               href="https://github.com/Guih-henriqueee"
               target="_blank"
@@ -85,11 +107,11 @@ const Header = () => {
         </div>
 
         {/* Imagem */}
-        <div className="flex-shrink-0">
+        <div className="mt-10 md:mt-0 flex-shrink-0">
           <img
             src="/assets/Profile.jpeg"
             alt="Foto de Guilherme Martins"
-            className="w-80 h-80 rounded-box shadow-lg object-cover shadow-primary"
+            className="w-60 h-60 md:w-80 md:h-80 rounded-box shadow-lg object-cover shadow-primary"
           />
         </div>
       </div>
