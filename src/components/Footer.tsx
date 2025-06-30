@@ -11,7 +11,7 @@ const Footer = () => {
         </div>
         <div className="flex gap-4 text-primary">
           <a
-            href="https://github.com/seuusuario"
+            href="https://github.com/guih-henriqueee"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary-content transition"
@@ -19,7 +19,7 @@ const Footer = () => {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/seuusuario"
+            href="https://linkedin.com/in/guih-henriquee"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary-content transition"
@@ -27,7 +27,7 @@ const Footer = () => {
             LinkedIn
           </a>
           <a
-            href="mailto:seu@email.com"
+            href="mailto:gmartinsdevelop@email.com"
             className="hover:text-primary-content transition"
           >
             E-mail
