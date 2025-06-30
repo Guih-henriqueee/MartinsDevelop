@@ -87,7 +87,7 @@ const Header = () => {
         {/* Imagem */}
         <div className="flex-shrink-0">
           <img
-            src="/src/assets/Profile.jpeg"
+            src="/assets/Profile.jpeg"
             alt="Foto de Guilherme Martins"
             className="w-80 h-80 rounded-box shadow-lg object-cover shadow-primary"
           />
