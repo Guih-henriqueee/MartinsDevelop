@@ -8,10 +8,13 @@ const Header = () => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    scrollHeader();
+
   }, [theme]);
 
- 
+  useEffect(() => {
+    scrollHeader();
+  }, []);
+
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
