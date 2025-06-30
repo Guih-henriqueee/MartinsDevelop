@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Github, Linkedin, Moon, Sun, Menu } from "lucide-react";
+import { Github, Linkedin, Smartphone, Moon, Sun, Menu } from "lucide-react";
 
 const Header = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -45,7 +45,7 @@ const Header = () => {
           {/* Botão de tema */}
           <button
             onClick={toggleTheme}
-            className="btn btn-sm btn-outline border-primary-content text-primary-content flex items-center gap-2"
+            className="btn btn-sm btn-outline border-secondary-content text-secondary-content flex items-center gap-2"
             aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
           >
             {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
@@ -78,7 +78,8 @@ const Header = () => {
           </p>
           <div className="flex justify-center md:justify-start flex-wrap gap-4">
             <a href="#projetos" className="btn btn-primary">Projetos</a>
-            <a href="/curriculo.pdf" download className="btn btn-outline btn-primary">
+            <a href="/contents/curriculo.pdf" download="Curriculo-Guilherme-Martins.pdf"
+              className="btn btn-outline btn-primary">
               Download Currículo
             </a>
           </div>
@@ -102,6 +103,15 @@ const Header = () => {
               aria-label="LinkedIn"
             >
               <Linkedin size={24} />
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=5511967392111&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary-content transition"
+              aria-label="whatsapp"
+            >
+              <Smartphone size={24} />
             </a>
           </div>
         </div>

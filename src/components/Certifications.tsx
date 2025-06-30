@@ -9,7 +9,7 @@ const certifications = [
     institution: "FIAP",
     year: "2023",
     link: "https://www.fiap.com.br/",
-    image: "https://via.placeholder.com/600x400?text=Python+FIAP",
+    image: "/assets/Certificado2.png",
     skills: ["Python", "Banco de Dados", "Lógica de Programação", "Análise de Sistemas"],
   },
   {
@@ -17,7 +17,7 @@ const certifications = [
     institution: "DIO (Digital Innovation One)",
     year: "2024/2025",
     link: "https://www.dio.me/",
-    image: "https://via.placeholder.com/600x400?text=Potencia+Tech+DIO",
+    image: "/assets/Certificado1.png",
     skills: [
       "Git & GitHub",
       "Python",
@@ -33,7 +33,7 @@ const certifications = [
     institution: "Fundação Bradesco",
     year: "Março de 2024",
     link: "https://www.ev.org.br/",
-    image: "https://via.placeholder.com/600x400?text=Java+Fundacao+Bradesco",
+    image: "/assets/Certificado3.png",
     skills: [
       "Java",
       "Programação Orientada a Objetos",
@@ -45,18 +45,16 @@ const certifications = [
 
   },
   {
-    title: "Certificação em Java Orientado a Objetos",
-    institution: "Fundação Bradesco",
-    year: "Março de 2024",
+    title: "Introduction to Python for Data Science and Data Engineering",
+    institution: "DataBricks",
+    year: "Junho de 2025",
     link: "https://www.ev.org.br/",
-    image: "https://via.placeholder.com/600x400?text=Java+Fundacao+Bradesco",
+    image: "/assets/Certificado4.png",
     skills: [
-      "Java",
-      "Programação Orientada a Objetos",
-      "Encapsulamento",
-      "Herança",
-      "Polimorfismo",
-      "Abstração",
+      "DataBricks",
+      "Computação em Nuvem",
+      "Apache Spark",
+      "Pandas",
     ],
 
   },

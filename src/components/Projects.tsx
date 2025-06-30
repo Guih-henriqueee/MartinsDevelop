@@ -7,21 +7,21 @@ const projects = [
     description:
       "Construção de APIs em diferentes linguagens, com controle transacional, administração de recursos e integração entre sistemas.",
     link: "https://github.com/Guih-henriqueee/dashboard-integracoes",
-    image: "../assets/Dashboard_Shadcn.jpeg",
+    image: "/assets/ApiResful.jpeg",
   },
   {
     title: "Dashboard Shadcn",
     description:
       "Dashboard gerencial com indicadores de performance, utilizando Shadcn e TanStack Table para visualização eficiente de dados.",
     link: "https://github.com/Guih-henriqueee/controle-nfs",
-    image: "../assets/DashboardShadcn.jpeg",
+    image: "/assets/DashboardShadcn.jpeg",
   },
   {
     title: "Pipelines DevOps",
     description:
       "Criação de pipelines CI/CD para validação automática e deploy seguro, evitando bugs em check-ins de novas versões.",
     link: "https://github.com/Guih-henriqueee/portal-certificacoes",
-    image: "../assets/Dashboard_Shadcn.jpeg",
+    image: "/assets/Pipelines.jpeg",
   },
 ];
 
