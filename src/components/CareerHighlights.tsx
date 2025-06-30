@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Laptop, Rocket, FileText } from "lucide-react";
+import { scrollHeader } from "../utils/ScrollReveal";
+
+
 
 const highlights = [
   {
@@ -22,10 +25,16 @@ const highlights = [
   },
 ];
 
+
+
 const CareerHighlights = () => {
+  useEffect(() => {
+    scrollHeader();
+  }, []);
+ 
   return (
-    <section id="destaques" className="space-y-8">
-      <h2 className="text-3xl flex justify-start font-bold text-primary text-center">
+    <section id="destaques" className="space-y-8 reveal-1">
+      <h2 className="text-3xl flex justify-start font-bold text-primary text-center reveal-2">
         Destaques da Carreira
       </h2>
 
@@ -33,13 +42,13 @@ const CareerHighlights = () => {
         {highlights.map((item, idx) => (
           <div
             key={idx}
-            className="bg-base-200 rounded-box p-6 shadow-md hover:shadow-lg transition"
+            className="bg-base-200 rounded-box p-6 shadow-md hover:shadow-lg transition reveal-3"
           >
             <div>{item.icon}</div>
-            <h3 className="text-xl font-semibold text-base-content mb-2">
+            <h3 className="text-xl font-semibold text-base-content mb-2 reveal-3">
               {item.title}
             </h3>
-            <p className="text-primary-content">{item.description}</p>
+            <p className="text-primary-content reveal-3">{item.description}</p>
           </div>
         ))}
       </div>

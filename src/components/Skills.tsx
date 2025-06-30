@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { scrollHeader } from "../utils/ScrollReveal";
 
 const skills = [
   { name: "TypeScript", level: 90 },
@@ -12,15 +13,19 @@ const skills = [
 ];
 
 const Skills = () => {
+  useEffect(() => {
+    scrollHeader();
+  }, []);
+
   return (
-    <section id="skills" className="space-y-8">
+    <section id="skills" className="space-y-8 reveal-1">
       <h2 className="text-3xl flex justify-start  font-bold text-primary text-center">
         Habilidades Técnicas
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 reveal-1">
         {skills.map((skill, idx) => (
-          <div key={idx} className="bg-base-200 p-4 rounded-box shadow-md">
+          <div key={idx} className="bg-base-200 p-4 rounded-box shadow-md ">
             <div className="flex justify-between mb-1">
               <span className="text-base-content font-medium">{skill.name}</span>
               <span className="text-sm text-base-content">{skill.level}%</span>

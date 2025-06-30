@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImageOff } from "lucide-react";
+import { scrollHeader } from "../utils/ScrollReveal";
 
 const projects = [
   {
@@ -26,8 +27,11 @@ const projects = [
 ];
 
 const Projects = () => {
+   useEffect(() => {
+     scrollHeader();
+   }, []);
   return (
-  <section id="projetos" className="space-y-8">
+  <section id="projetos" className="space-y-8 reveal-1">
       <h2 className="text-3xl font-bold text-primary">Projetos Pessoais</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -37,7 +41,7 @@ const Projects = () => {
           return (
             <div
               key={idx}
-              className="bg-base-200 rounded-box shadow-md hover:shadow-xl transition overflow-hidden border border-base-300"
+              className="bg-base-200 rounded-box shadow-md hover:shadow-xl transition overflow-hidden border border-base-300 reveal-3"
             >
               {project.image && !imgError ? (
                 <img
@@ -54,10 +58,10 @@ const Projects = () => {
 
               <div className="p-5 flex flex-col justify-between h-full">
                 <div>
-                  <h3 className="text-xl font-semibold text-base-content mb-2">
+                  <h3 className="text-xl font-semibold text-base-content mb-2 reveal-2">
                     {project.title}
                   </h3>
-                  <p className="text-primary-content text-sm">
+                  <p className="text-primary-content text-sm reveal-3">
                     {project.description}
                   </p>
                 </div>

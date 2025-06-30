@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImageOff, ArrowLeftRight } from "lucide-react"; 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
+import {scrollHeader} from "../utils/ScrollReveal"
 const certifications = [
   {
     title: "Certificação em Python",
@@ -131,16 +131,20 @@ const CertificationCard = ({
 };
 
 const Certifications = () => {
+  useEffect(() => {   scrollHeader(); 
+  }, []);
+  
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleOpen = (idx: number) => {
     setOpenIndex((prev) => (prev === idx ? null : idx));
   };
 
+
   return (
-    <section id="certificacoes" className="space-y-8">
-      <div className="flex items-center justify-between">
-        <h2 className="text-3xl font-bold text-primary">Certificações</h2>
+    <section id="certificacoes" className="space-y-8 reveal-4">
+      <div className="flex items-center justify-between reveal-1">
+        <h2 className="text-3xl font-bold text-primary reveal-1">Certificações</h2>
         {certifications.length > 3 && (
           <ArrowLeftRight className="text-primary w-6 h-6" />
         )}
@@ -168,14 +172,14 @@ const Certifications = () => {
           ))}
         </Swiper>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-1">
           {certifications.map((cert, idx) => (
-            <CertificationCard
+            <CertificationCard 
               key={idx}
               cert={cert}
               idx={idx}
               isOpen={openIndex === idx}
-              toggleOpen={toggleOpen}
+              toggleOpen={toggleOpen} 
             />
           ))}
         </div>

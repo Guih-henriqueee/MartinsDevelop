@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Smartphone, Moon, Sun, Menu } from "lucide-react";
+import { scrollHeader } from "../utils/ScrollReveal";
 
 const Header = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -7,7 +8,10 @@ const Header = () => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    scrollHeader();
   }, [theme]);
+
+ 
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -19,10 +23,8 @@ const Header = () => {
 
   return (
     <header className="relative bg-gradient-to-b from-base-100 to-transparent text-base-content">
-      {/* Navbar fixa no topo */}
       <div className="fixed top-0 left-0 w-full z-50 bg-neutral backdrop-blur shadow-md">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          {/* Botão de menu para mobile */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
@@ -33,7 +35,6 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Navegação padrão (esconde no mobile) */}
           <nav className="hidden md:flex space-x-6 text-neutral-content">
             <a href="#destaques" className="hover:text-primary-content transition">Destaques</a>
             <a href="#projetos" className="hover:text-primary-content transition">Projetos</a>
@@ -42,7 +43,6 @@ const Header = () => {
             <a href="#contato" className="hover:text-primary-content transition">Contato</a>
           </nav>
 
-          {/* Botão de tema */}
           <button
             onClick={toggleTheme}
             className="btn btn-sm btn-outline border-secondary-content text-secondary-content flex items-center gap-2"
@@ -52,7 +52,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Menu dropdown no mobile */}
         {isMenuOpen && (
           <div className="md:hidden px-4 pb-4 bg-neutral text-neutral-content space-y-2">
             <a href="#destaques" onClick={toggleMenu} className="block hover:text-primary-content">Destaques</a>
@@ -64,19 +63,17 @@ const Header = () => {
         )}
       </div>
 
-      {/* Conteúdo principal */}
       <div className="flex flex-col md:flex-row items-center max-w-6xl w-full px-4 gap-12 pt-24 pb-10 mx-auto">
-        {/* Texto */}
         <div className="flex-1 text-center md:text-left">
-          <h1 className="text-4xl font-bold text-primary mb-2">Guilherme Martins</h1>
-          <p className="text-lg font-semibold text-primary-content mb-4">
+          <h1 className="text-4xl font-bold text-primary mb-2 reveal-1">Guilherme Martins</h1>
+          <p className="text-lg font-semibold text-primary-content mb-4 reveal-2">
             Desenvolvedor FullStack
           </p>
-          <p className="text-base text-primary-content mb-6 leading-relaxed max-w-md mx-auto md:mx-0">
+          <p className="text-base text-primary-content mb-6 leading-relaxed max-w-md mx-auto md:mx-0 reveal-3">
             Analista de Desenvolvimento de Sistemas | Consultor de Integrações e Ecommerce |
             Desenvolvimento de Aplicações e Consultoria de SAP Business One.
           </p>
-          <div className="flex justify-center md:justify-start flex-wrap gap-4">
+          <div className="flex justify-center md:justify-start flex-wrap gap-4 reveal-4">
             <a href="#projetos" className="btn btn-primary">Projetos</a>
             <a href="/contents/curriculo.pdf" download="Curriculo-Guilherme-Martins.pdf"
               className="btn btn-outline btn-primary">
@@ -84,8 +81,7 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Redes Sociais */}
-          <div className="flex justify-center md:justify-start gap-5 mt-6 text-primary">
+          <div className="flex justify-center md:justify-start gap-5 mt-6 text-primary reveal-5">
             <a
               href="https://github.com/Guih-henriqueee"
               target="_blank"
@@ -116,8 +112,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Imagem */}
-        <div className="mt-10 md:mt-0 flex-shrink-0">
+        <div className="mt-10 md:mt-0 flex-shrink-0 reveal-img">
           <img
             src="/assets/Profile.jpeg"
             alt="Foto de Guilherme Martins"

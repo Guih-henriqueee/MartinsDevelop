@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { scrollHeader } from "../utils/ScrollReveal";
+import { Github, Linkedin, Mail, Smartphone } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,62 +16,119 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulário enviado:", formData);
     alert("Mensagem enviada com sucesso!");
     setFormData({ nome: "", email: "", mensagem: "" });
   };
 
+  useEffect(() => {
+    scrollHeader();
+  }, []);
+
   return (
-    <section id="contato" className="space-y-8">
-      <h2 className="text-3xl flex font-bold text-primary text-start">Contato</h2>
+    <section id="contato" className="space-y-10 px-4 py-16 max-w-5xl mx-auto">
+      <h2 className="text-3xl font-bold text-primary text-center reveal-1">Contato</h2>
 
-      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-4">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Nome</span>
-          </label>
-          <input
-            type="text"
-            name="nome"
-            value={formData.nome}
-            onChange={handleChange}
-            className="input input-bordered bg-base-100"
-            required
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        {/* Formulário */}
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 reveal-2 w-full"
+        >
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Nome</span>
+            </label>
+            <input
+              type="text"
+              name="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              className="input input-bordered w-full bg-base-100"
+              required
+            />
+          </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">E-mail</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="input input-bordered w-full bg-base-100"
+              required
+            />
+          </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Mensagem</span>
+            </label>
+            <textarea
+              name="mensagem"
+              value={formData.mensagem}
+              onChange={handleChange}
+              className="textarea textarea-bordered w-full bg-base-100"
+              rows={4}
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" className="btn btn-primary w-full mt-4">
+            Enviar Mensagem
+          </button>
+        </form>
+
+        {/* Contato visual e ícones */}
+        <div className="flex flex-col items-center text-primary reveal-3 gap-6">
+          <img
+            src="/assets/Footer-contatct.png"
+            alt="Ilustração de Contato"
+            className="pt-8 w-full h-auto max-h-[300px] object-contain rounded-xl"
           />
-        </div>
 
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">E-mail</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="input input-bordered bg-base-100"
-            required
-          />
-        </div>
+          <p className="text-lg text-center">Você também pode me encontrar em:</p>
 
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Mensagem</span>
-          </label>
-          <textarea
-            name="mensagem"
-            value={formData.mensagem}
-            onChange={handleChange}
-            className="textarea textarea-bordered bg-base-100"
-            rows={4}
-            required
-          ></textarea>
+          <div className="flex justify-center flex-wrap gap-6 text-xl">
+            <a
+              href="https://api.whatsapp.com/send/?phone=5511967392111&text=Olá!%20Gostaria%20de%20falar%20com%20você."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="hover:text-primary-content transition"
+            >
+              <Smartphone size={28} />
+            </a>
+            <a
+              href="mailto:guihenrique.dev@gmail.com"
+              aria-label="Email"
+              className="hover:text-primary-content transition"
+            >
+              <Mail size={28} />
+            </a>
+            <a
+              href="https://linkedin.com/in/guih-henriquee"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:text-primary-content transition"
+            >
+              <Linkedin size={28} />
+            </a>
+            <a
+              href="https://github.com/Guih-henriqueee"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="hover:text-primary-content transition"
+            >
+              <Github size={28} />
+            </a>
+          </div>
         </div>
-
-        <button type="submit" className="btn btn-primary w-full">
-          Enviar Mensagem
-        </button>
-      </form>
+      </div>
     </section>
   );
 };
