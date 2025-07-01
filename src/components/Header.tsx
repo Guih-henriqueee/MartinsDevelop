@@ -25,30 +25,30 @@ const Header = () => {
 
   return (
     <header className="relative bg-gradient-to-b from-base-100 to-transparent text-base-content">
-      
-      <div className="fixed top-0 left-0 w-full z-50 bg-neutral backdrop-blur shadow-md">
+
+      <div className="fixed top-0 left-0 w-full z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="btn btn-ghost btn-sm text-neutral-content"
+              className="btn btn-ghost btn-sm text-primary"
               aria-label="Abrir menu"
             >
               <Menu size={20} />
             </button>
           </div>
 
-          <nav className="hidden md:flex space-x-6 text-neutral-content">
-            <a href="#destaques" className="hover:text-primary-content transition">Destaques</a>
-            <a href="#projetos" className="hover:text-primary-content transition">Projetos</a>
-            <a href="#skills" className="hover:text-primary-content transition">Skills</a>
-            <a href="#certificacoes" className="hover:text-primary-content transition">Certificações</a>
-            <a href="#contato" className="hover:text-primary-content transition">Contato</a>
+          <nav className="hidden md:flex space-x-6 text-primary hover:text-success">
+            <a href="#destaques" className="hover:text-primary transition">Destaques</a>
+            <a href="#projetos" className="hover:text-primary transition">Projetos</a>
+            <a href="#skills" className="hover:text-primary transition">Skills</a>
+            <a href="#certificacoes" className="hover:text-primary transition">Certificações</a>
+            <a href="#contato" className="hover:text-primary transition">Contato</a>
           </nav>
 
           <button
             onClick={toggleTheme}
-            className="btn btn-sm btn-outline border-secondary-content text-secondary-content flex items-center gap-2"
+            className="btn btn-sm btn-outline border-primary text-primary flex items-center gap-2"
             aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
           >
             {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
@@ -56,12 +56,13 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden px-4 pb-4 bg-neutral text-neutral-content space-y-2">
-            <a href="#destaques" onClick={toggleMenu} className="block hover:text-primary-content">Destaques</a>
-            <a href="#projetos" onClick={toggleMenu} className="block hover:text-primary-content">Projetos</a>
-            <a href="#skills" onClick={toggleMenu} className="block hover:text-primary-content">Skills</a>
-            <a href="#certificacoes" onClick={toggleMenu} className="block hover:text-primary-content">Certificações</a>
-            <a href="#contato" onClick={toggleMenu} className="block hover:text-primary-content">Contato</a>
+          <div className="md:hidden px-4 pb-4 light:bg-white dark:bg-base-100 text-primary hover:text-success space-y-2 shadow-2xl">
+
+            <a href="#destaques" onClick={toggleMenu} className="block hover:text-primary">Destaques</a>
+            <a href="#projetos" onClick={toggleMenu} className="block hover:text-primary">Projetos</a>
+            <a href="#skills" onClick={toggleMenu} className="block hover:text-primary">Skills</a>
+            <a href="#certificacoes" onClick={toggleMenu} className="block hover:text-primary">Certificações</a>
+            <a href="#contato" onClick={toggleMenu} className="block hover:text-primary">Contato</a>
           </div>
         )}
       </div>
