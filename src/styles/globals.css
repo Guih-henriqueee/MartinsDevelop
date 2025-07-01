@@ -7,8 +7,32 @@ html {
 }
 
 .bg-image-overlay {
-  /* background-image: url('../assets/background.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+body {
+  margin: 0;
+}
+
+canvas {
+  display: block;
+}
+
+#particles-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Smartphone, Moon, Sun, Menu } from "lucide-react";
 import { scrollHeader } from "../utils/ScrollReveal";
-
 const Header = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,6 +25,7 @@ const Header = () => {
 
   return (
     <header className="relative bg-gradient-to-b from-base-100 to-transparent text-base-content">
+      
       <div className="fixed top-0 left-0 w-full z-50 bg-neutral backdrop-blur shadow-md">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="md:hidden">

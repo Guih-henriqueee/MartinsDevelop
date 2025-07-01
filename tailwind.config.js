@@ -11,6 +11,8 @@ const config = {
     themes: [
       {
         light: {
+          
+          "custom-gradient-light": "linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.9))",
           "base-100": "oklch(100% 0 0)",
           "base-200": "oklch(93% 0 0)",
           "base-300": "oklch(86% 0 0)",
@@ -42,7 +44,8 @@ const config = {
 
         },
 
-      dark: {
+        dark: {
+          "custom-gradient-dark": "linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95))",
           "base-100": "oklch(15% 0.02 260)",      // fundo escuro suave
           "base-200": "oklch(20% 0.03 260)",      // fundo um pouco mais claro
           "base-300": "oklch(25% 0.04 260)",      // mais claro ainda para bordas, cards
