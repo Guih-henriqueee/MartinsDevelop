@@ -17,7 +17,6 @@ export async function sendContactEmail(params: EmailParams): Promise<void> {
   console.log(serviceId)
   console.log(templateId_me)
   console.log(publicKey)
-  console.log(publicKey)
 
   if (!serviceId || !templateId || !templateId_me || !publicKey) {
     throw new Error('Missing environment variables for EmailJS');
