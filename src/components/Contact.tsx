@@ -11,6 +11,7 @@ const Contact = () => {
   });
 
   const [isSending, setIsSending] = useState(false);
+  const [isSended, setSended] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
 
   const handleChange = (
@@ -25,10 +26,11 @@ const Contact = () => {
 
     setIsSending(true);
     setFeedback(null);
+    setSended(false);
 
     try {
       await sendContactEmail(formData);
-      console.log("Mensagem enviada com sucesso! ✅");
+      setSended(true); // <-- isso aqui
       setFormData({ nome: "", email: "", mensagem: "" });
     } catch (error) {
       console.error("Erro ao enviar:", error);
@@ -39,8 +41,16 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    scrollHeader();
-  }, []);
+  scrollHeader();
+}, []);
+
+useEffect(() => {
+  if (isSended) {
+    const timeout = setTimeout(() => setSended(false), 1700);
+    return () => clearTimeout(timeout);
+  }
+}, [isSended]);
+
 
   return (
     <section id="contato" className="space-y-10 px-4 py-16 max-w-5xl mx-auto">
@@ -101,7 +111,13 @@ const Contact = () => {
             className="btn btn-primary w-full mt-4"
             disabled={isSending}
           >
-            {isSending ? "Enviando..." : "Enviar Mensagem"}
+            {
+              isSending
+                ? "Enviando..."
+                : isSended
+                ? "Enviado!"
+                : "Enviar Mensagem"
+            }
           </button>
 
           {feedback && (

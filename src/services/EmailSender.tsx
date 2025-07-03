@@ -13,11 +13,6 @@ export async function sendContactEmail(params: EmailParams): Promise<void> {
   const publicKey = import.meta.env.VITE_PUBLIC_CREDENTIAL;
 
 
-  console.log(templateId)
-  console.log(serviceId)
-  console.log(templateId_me)
-  console.log(publicKey)
-
   if (!serviceId || !templateId || !templateId_me || !publicKey) {
     throw new Error('Missing environment variables for EmailJS');
   }
