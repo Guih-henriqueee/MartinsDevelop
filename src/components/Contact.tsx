@@ -13,10 +13,9 @@ const Contact = () => {
 
   const [isSending, setIsSending] = useState(false);
   const [isSended, setSended] = useState(false);
-  const [feedback, setFeedback] = useState<string | null>(null);
-
   const [showRecaptcha, setShowRecaptcha] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,13 +28,9 @@ const Contact = () => {
     setRecaptchaToken(token);
   };
 
-  const handleRecaptchaExpire = () => {
-    setRecaptchaToken(null);
-  };
-
   const handleSendAfterRecaptcha = async () => {
     if (!recaptchaToken) {
-      alert("Por favor, valide o reCAPTCHA");
+      setFeedback("Por favor, valide o reCAPTCHA.");
       return;
     }
 
@@ -63,7 +58,7 @@ const Contact = () => {
 
   useEffect(() => {
     if (isSended) {
-      const timeout = setTimeout(() => setSended(false), 1500);
+      const timeout = setTimeout(() => setSended(false), 2000);
       return () => clearTimeout(timeout);
     }
   }, [isSended]);
@@ -143,26 +138,17 @@ const Contact = () => {
                 disabled={isSending || !recaptchaToken}
                 onClick={handleSendAfterRecaptcha}
               >
-                {isSending ? "Enviando..." : "Confirmar e Enviar"}
-                {
-              isSending
-                ? "Enviando..."
-                : isSended
-                ? "Enviado!"
-                : "Enviar Mensagem"
-            }
+                {isSending
+                  ? "Enviando..."
+                  : isSended
+                  ? "Enviado!"
+                  : "Confirmar e Enviar"}
               </button>
             </>
           )}
 
           {feedback && (
-            <p
-              className={`mt-3 text-center ${
-                feedback.toLowerCase().includes("erro")
-                  ? "text-error"
-                  : "text-success"
-              }`}
-            >
+            <p className="mt-3 text-center text-error">
               {feedback}
             </p>
           )}
