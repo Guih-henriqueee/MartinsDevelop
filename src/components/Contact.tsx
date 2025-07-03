@@ -49,7 +49,6 @@ const Contact = () => {
       setFormData({ nome: "", email: "", mensagem: "" });
       setShowRecaptcha(false);
       setRecaptchaToken(null);
-      setFeedback("Mensagem enviada com sucesso! ✅");
     } catch (error) {
       console.error("Erro ao enviar:", error);
       setFeedback("Ocorreu um erro ao enviar. Tente novamente.");
@@ -145,6 +144,13 @@ const Contact = () => {
                 onClick={handleSendAfterRecaptcha}
               >
                 {isSending ? "Enviando..." : "Confirmar e Enviar"}
+                {
+              isSending
+                ? "Enviando..."
+                : isSended
+                ? "Enviado!"
+                : "Enviar Mensagem"
+            }
               </button>
             </>
           )}
