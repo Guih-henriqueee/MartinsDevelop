@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { scrollHeader } from "../utils/ScrollReveal";
 import { Github, Linkedin, Mail, Smartphone } from "lucide-react";
+import { sendContactEmail } from "../services/EmailSender";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,15 +10,32 @@ const Contact = () => {
     mensagem: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [isSending, setIsSending] = useState(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Mensagem enviada com sucesso!");
-    setFormData({ nome: "", email: "", mensagem: "" });
+
+    setIsSending(true);
+    setFeedback(null);
+
+    try {
+      await sendContactEmail(formData);
+      console.log("Mensagem enviada com sucesso! ✅");
+      setFormData({ nome: "", email: "", mensagem: "" });
+    } catch (error) {
+      console.error("Erro ao enviar:", error);
+      console.log("Ocorreu um erro ao enviar. Tente novamente.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   useEffect(() => {
@@ -26,14 +44,13 @@ const Contact = () => {
 
   return (
     <section id="contato" className="space-y-10 px-4 py-16 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold text-primary text-center reveal-1">Contato</h2>
+      <h2 className="text-3xl font-bold text-primary text-center reveal-1">
+        Contato
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         {/* Formulário */}
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 reveal-2 w-full"
-        >
+        <form onSubmit={handleSubmit} className="space-y-4 reveal-2 w-full">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Nome</span>
@@ -45,6 +62,7 @@ const Contact = () => {
               onChange={handleChange}
               className="input input-bordered w-full bg-base-100"
               required
+              disabled={isSending}
             />
           </div>
 
@@ -59,6 +77,7 @@ const Contact = () => {
               onChange={handleChange}
               className="input input-bordered w-full bg-base-100"
               required
+              disabled={isSending}
             />
           </div>
 
@@ -73,12 +92,28 @@ const Contact = () => {
               className="textarea textarea-bordered w-full bg-base-100"
               rows={4}
               required
+              disabled={isSending}
             ></textarea>
           </div>
 
-          <button type="submit" className="btn btn-primary w-full mt-4">
-            Enviar Mensagem
+          <button
+            type="submit"
+            className="btn btn-primary w-full mt-4"
+            disabled={isSending}
+          >
+            {isSending ? "Enviando..." : "Enviar Mensagem"}
           </button>
+
+          {feedback && (
+            <p
+              className={`mt-3 text-center ${feedback.includes("erro")
+                  ? "text-error"
+                  : "text-success"
+                }`}
+            >
+              {feedback}
+            </p>
+          )}
         </form>
 
         {/* Contato visual e ícones */}
