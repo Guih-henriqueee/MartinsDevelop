@@ -122,7 +122,15 @@ const Contact = () => {
               type="button"
               className="btn btn-primary w-full mt-4"
               disabled={isSending}
-              onClick={() => setShowRecaptcha(true)}
+              onClick={() => {
+                const { nome, email, mensagem } = formData;
+                if (!nome.trim() || !email.trim() || !mensagem.trim()) {
+                  setFeedback("Preencha todos os campos antes de enviar.");
+                  return;
+                }
+                setFeedback(null);
+                setShowRecaptcha(true);
+              }}
             >
               Enviar Mensagem
             </button>
