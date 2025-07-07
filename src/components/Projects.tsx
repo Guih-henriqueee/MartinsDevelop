@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ImageOff } from "lucide-react";
 import { scrollHeader } from "../utils/ScrollReveal";
+import { Button } from "../utils/Buttom";
 
 const projects = [
   {
@@ -9,6 +10,7 @@ const projects = [
       "Construção de APIs em diferentes linguagens, com controle transacional, administração de recursos e integração entre sistemas.",
     link: "https://github.com/Guih-henriqueee/api-agendamentos",
     image: "/assets/ApiResful.png",
+    tags: ["Python", "JavaScript", "TypeScript"],
   },
   {
     title: "Dashboard Shadcn",
@@ -16,6 +18,7 @@ const projects = [
       "Dashboard gerencial com indicadores de performance, utilizando Shadcn e TanStack Table para visualização eficiente de dados.",
     link: "https://github.com/Guih-henriqueee/",
     image: "/assets/DashboardShadcn.png",
+    tags: ["React", "Shadcn", "TanStack"],
   },
   {
     title: "Pipelines DevOps",
@@ -23,6 +26,7 @@ const projects = [
       "Criação de pipelines CI/CD para validação automática e deploy seguro, evitando bugs em check-ins de novas versões.",
     link: "https://github.com/Guih-henriqueee/",
     image: "/assets/Pipelines.png",
+    tags: ["CI/CD", "GitHub Actions", "Shell"],
   },
   {
     title: "Integrador Backend",
@@ -30,29 +34,33 @@ const projects = [
       "Sistema em Python para integrar e gerenciar pedidos de múltiplos painéis via API, com armazenamento em PostgreSQL, validação automática de tabelas e rotinas de atualização contínua. Usa multithreading para otimizar o processamento e inclui logs detalhados para monitoramento.",
     link: "https://github.com/Guih-henriqueee/Integrador",
     image: "/assets/Integrador.png",
+    tags: ["Python", "PostgreSQL", "Multithreading"],
   },
   {
     title: "Landing Pages",
     description:
-      "Desenvolvimento de landing pages responsivas e otimizadas, aplicando as melhores práticas de UI/UX com foco em performance e experiência do usuário. Projetos construídos principalmente com TypeScript, JavaScript e React, explorando técnicas atuais para interfaces fluidas e funcionais.",
+      "Desenvolvimento de landing pages responsivas e otimizadas, aplicando as melhores práticas de UI/UX com foco em performance e experiência do usuário.",
     link: "https://github.com/Guih-henriqueee/",
     image: "/assets/LandingPages.png",
+    tags: ["React", "TailwindCSS", "UX/UI"],
   },
   {
-    title: "FulLstack Projects",
+    title: "Fullstack Projects",
     description:
       "Desenvolvimento completo de aplicações modernas, com foco em front-end e back-end, usando tecnologias atuais e melhores práticas para soluções escaláveis e eficientes.",
     link: "https://github.com/Guih-henriqueee/",
     image: "/assets/Fullstack.png",
+    tags: ["Fullstack", "Node.js", "React"],
   },
 ];
 
 const Projects = () => {
-   useEffect(() => {
-     scrollHeader();
-   }, []);
+  useEffect(() => {
+    scrollHeader();
+  }, []);
+
   return (
-  <section id="projetos" className="space-y-8 reveal-1">
+    <section id="projetos" className="space-y-8 reveal-1">
       <h2 className="text-3xl font-bold text-primary">Projetos Pessoais</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -62,13 +70,13 @@ const Projects = () => {
           return (
             <div
               key={idx}
-              className="bg-base-200 rounded-box shadow-md hover:shadow-xl transition overflow-hidden border border-base-300 reveal-3"
+              className="bg-base-200 rounded-box shadow-md hover:shadow-xl transition overflow-hidden border border-base-300 reveal-3 flex flex-col"
             >
               {project.image && !imgError ? (
                 <img
                   src={project.image}
                   alt={project.title}
-                  className= "w-full"
+                  className="w-full"
                   onError={() => setImgError(true)}
                 />
               ) : (
@@ -77,7 +85,7 @@ const Projects = () => {
                 </div>
               )}
 
-              <div className="p-5 flex flex-col justify-between h-full">
+              <div className="p-5 flex flex-col justify-between flex-grow">
                 <div>
                   <h3 className="text-xl font-semibold text-base-content mb-2 reveal-2">
                     {project.title}
@@ -86,14 +94,31 @@ const Projects = () => {
                     {project.description}
                   </p>
                 </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-sm btn-outline btn-primary mt-4 w-fit"
-                >
-                  Ver Projeto
-                </a>
+
+                <div className="flex justify-between items-end mt-6">
+                  {/* Botão Ver Projeto (esquerda) */}
+                  {/* <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-sm btn-outline btn-primary w-fit"
+                  >
+                    Ver Projeto
+                  </a> */}
+
+                  {/* Tags (direita) */}
+                  <div className="flex flex-wrap gap-2 justify-end self-end">
+                    {project.tags.map((tag, i) => (
+                      <Button
+                        key={i}
+                        className="btn btn-xs rounded-box px-2 py-[2px] text-[10px] normal-case
+                                   bg-transparent text-base-content border border-base-content/40 shadow-none hover:bg-base-300/10"
+                      >
+                        {tag}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           );
