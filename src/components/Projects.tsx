@@ -7,22 +7,43 @@ const projects = [
     title: "APIs RESTfuls",
     description:
       "Construção de APIs em diferentes linguagens, com controle transacional, administração de recursos e integração entre sistemas.",
-    link: "https://github.com/Guih-henriqueee/dashboard-integracoes",
-    image: "/assets/ApiResful.jpeg",
+    link: "https://github.com/Guih-henriqueee/api-agendamentos",
+    image: "/assets/ApiResful.png",
   },
   {
     title: "Dashboard Shadcn",
     description:
       "Dashboard gerencial com indicadores de performance, utilizando Shadcn e TanStack Table para visualização eficiente de dados.",
-    link: "https://github.com/Guih-henriqueee/controle-nfs",
-    image: "/assets/DashboardShadcn.jpeg",
+    link: "https://github.com/Guih-henriqueee/",
+    image: "/assets/DashboardShadcn.png",
   },
   {
     title: "Pipelines DevOps",
     description:
       "Criação de pipelines CI/CD para validação automática e deploy seguro, evitando bugs em check-ins de novas versões.",
-    link: "https://github.com/Guih-henriqueee/portal-certificacoes",
-    image: "/assets/Pipelines.jpeg",
+    link: "https://github.com/Guih-henriqueee/",
+    image: "/assets/Pipelines.png",
+  },
+  {
+    title: "Integrador Backend",
+    description:
+      "Sistema em Python para integrar e gerenciar pedidos de múltiplos painéis via API, com armazenamento em PostgreSQL, validação automática de tabelas e rotinas de atualização contínua. Usa multithreading para otimizar o processamento e inclui logs detalhados para monitoramento.",
+    link: "https://github.com/Guih-henriqueee/Integrador",
+    image: "/assets/Integrador.png",
+  },
+  {
+    title: "Landing Pages",
+    description:
+      "Desenvolvimento de landing pages responsivas e otimizadas, aplicando as melhores práticas de UI/UX com foco em performance e experiência do usuário. Projetos construídos principalmente com TypeScript, JavaScript e React, explorando técnicas atuais para interfaces fluidas e funcionais.",
+    link: "https://github.com/Guih-henriqueee/",
+    image: "/assets/LandingPages.png",
+  },
+  {
+    title: "FulLstack Projects",
+    description:
+      "Desenvolvimento completo de aplicações modernas, com foco em front-end e back-end, usando tecnologias atuais e melhores práticas para soluções escaláveis e eficientes.",
+    link: "https://github.com/Guih-henriqueee/",
+    image: "/assets/Fullstack.png",
   },
 ];
 
@@ -47,7 +68,7 @@ const Projects = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover"
+                  className= "w-full"
                   onError={() => setImgError(true)}
                 />
               ) : (
