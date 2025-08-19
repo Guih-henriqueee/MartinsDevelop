@@ -24,7 +24,7 @@ const SkillBar: React.FC<{ level: number }> = ({ level }) => {
       setProgress((prev) => {
         if (prev < level) {
           frame = requestAnimationFrame(animate);
-          return prev + 0.05;
+          return prev + 0.15;
         } else {
           cancelAnimationFrame(frame);
           return level;
