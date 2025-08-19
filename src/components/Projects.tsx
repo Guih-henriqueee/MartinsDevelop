@@ -40,7 +40,7 @@ const projects = [
     title: "Landing Pages",
     description:
       "Desenvolvimento de landing pages responsivas e otimizadas, aplicando as melhores práticas de UI/UX com foco em performance e experiência do usuário.",
-    link: "https://github.com/Guih-henriqueee/",
+    link: "https://rozz-project.vercel.app/",
     image: "/assets/LandingPages.png",
     tags: ["React", "TailwindCSS", "UX/UI"],
   },
