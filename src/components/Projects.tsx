@@ -11,6 +11,7 @@ const projects = [
     link: "https://github.com/Guih-henriqueee/api-agendamentos",
     image: "/assets/ApiResful.png",
     tags: ["Python", "JavaScript", "TypeScript"],
+    active: false,
   },
   {
     title: "Dashboard Shadcn",
@@ -19,6 +20,7 @@ const projects = [
     link: "https://github.com/Guih-henriqueee/",
     image: "/assets/DashboardShadcn.png",
     tags: ["React", "Shadcn", "TanStack"],
+    active: false,
   },
   {
     title: "Pipelines DevOps",
@@ -27,6 +29,7 @@ const projects = [
     link: "https://github.com/Guih-henriqueee/",
     image: "/assets/Pipelines.png",
     tags: ["CI/CD", "GitHub Actions", "Shell"],
+    active: false,
   },
   {
     title: "Integrador Backend",
@@ -35,6 +38,7 @@ const projects = [
     link: "https://github.com/Guih-henriqueee/Integrador",
     image: "/assets/Integrador.png",
     tags: ["Python", "PostgreSQL", "Multithreading"],
+    active: false,
   },
   {
     title: "Landing Pages",
@@ -43,6 +47,7 @@ const projects = [
     link: "https://rozz-project.vercel.app/",
     image: "/assets/LandingPages.png",
     tags: ["React", "TailwindCSS", "UX/UI"],
+    active: true,
   },
   {
     title: "Fullstack Projects",
@@ -51,6 +56,7 @@ const projects = [
     link: "https://github.com/Guih-henriqueee/",
     image: "/assets/Fullstack.png",
     tags: ["Fullstack", "Node.js", "React"],
+    active: false,
   },
 ];
 
@@ -59,7 +65,7 @@ const Projects = () => {
     scrollHeader();
   }, []);
 
-  return (
+ return (
     <section id="projetos" className="space-y-8 reveal-1">
       <h2 className="text-3xl font-bold text-primary">Projetos Pessoais</h2>
 
@@ -97,14 +103,16 @@ const Projects = () => {
 
                 <div className="flex justify-between items-end mt-6">
                   {/* Botão Ver Projeto (esquerda) */}
-                  {/* <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-sm btn-outline btn-primary w-fit"
-                  >
-                    Ver Projeto
-                  </a> */}
+                  {project.active && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-sm btn-outline btn-primary w-fit"
+                    >
+                      Ver Projeto
+                    </a>
+                  )}
 
                   {/* Tags (direita) */}
                   <div className="flex flex-wrap gap-2 justify-end self-end">
