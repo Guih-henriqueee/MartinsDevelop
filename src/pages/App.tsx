@@ -7,6 +7,8 @@ import Certifications from "../components/Certifications";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import ParticlesBackground from "../utils/Particles";
+import { ChatBot } from "../components/bot/AI-Assistence";
+
 
 function App() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -44,9 +46,14 @@ function App() {
           <Contact />
         </main>
       </div>
+
       <Footer />
+
+      {/* ChatBot dentro da div principal */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <ChatBot />
+      </div>
     </div>
   );
 }
-
 export default App;

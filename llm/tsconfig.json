@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ESNext", "DOM"],
+    "types": ["node"],   // <- garante que os tipos do node sejam carregados
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}

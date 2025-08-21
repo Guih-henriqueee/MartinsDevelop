@@ -46,3 +46,4 @@ pnpm-lock.yaml
 
 # arquivos gerados pelo vercel (opcional, se não quiser versionar)
 .vercel/
+.vercel
