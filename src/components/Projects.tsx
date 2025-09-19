@@ -17,10 +17,10 @@ const projects = [
     title: "Dashboard Shadcn",
     description:
       "Dashboard gerencial com indicadores de performance, utilizando Shadcn e TanStack Table para visualização eficiente de dados.",
-    link: "https://github.com/Guih-henriqueee/",
+    link: "https://user-management-6u8t.vercel.app/",
     image: "/assets/DashboardShadcn.png",
     tags: ["React", "Shadcn", "TanStack"],
-    active: false,
+    active: true,
   },
   {
     title: "Pipelines DevOps",
