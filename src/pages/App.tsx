@@ -1,59 +1,74 @@
-import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import CareerHighlights from "../components/CareerHighlights";
-import Projects from "../components/Projects";
-import Skills from "../components/Skills";
-import Certifications from "../components/Certifications";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-import ParticlesBackground from "../utils/Particles";
+import { useEffect } from "react";
+import { initMotion } from "../motion/bootstrap";
+import { useReducedMotion } from "../motion/useReducedMotion";
 import { ChatBot } from "../components/bot/AI-Assistence";
+import Boot from "../components/scenes/Boot";
+import HeroCircuit, { HeroTopNav } from "../components/scenes/HeroCircuit";
+import BootPanel from "../components/scenes/BootPanel";
+import CareerSignal from "../components/scenes/CareerSignal";
+import ProjectsHorizontal from "../components/scenes/ProjectsHorizontal";
+import SkillsMatrix from "../components/scenes/SkillsMatrix";
+import CredentialsFan from "../components/scenes/CredentialsFan";
+import ContactClose from "../components/scenes/ContactClose";
 
-
+/**
+ * Orquestração das 8 cenas de "Sinal & Circuito". Cada cena é uma "estação" de um único
+ * circuito de scroll — não uma lista de cards empilhados. A faixa de fundo full-bleed
+ * (`.bg-signal-layer` + `.bg-blueprint`) e o ChatBot ficam como IRMÃOS do conteúdo
+ * scrollável, fora de qualquer árvore que uma futura transformação do Lenis possa afetar.
+ */
 function App() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const { prefersReducedMotion } = useReducedMotion();
 
   useEffect(() => {
-    const currentTheme = document.documentElement.getAttribute("data-theme") as "light" | "dark";
-    if (currentTheme) setTheme(currentTheme);
+    // Carregado depois do primeiro paint: nenhum RAF/listener de motion roda antes disso.
+    const idle =
+      "requestIdleCallback" in window
+        ? window.requestIdleCallback
+        : (cb: () => void) => window.setTimeout(cb, 200);
 
-    const observer = new MutationObserver(() => {
-      const updatedTheme = document.documentElement.getAttribute("data-theme") as "light" | "dark";
-      if (updatedTheme) setTheme(updatedTheme);
+    const handle = idle(() => {
+      initMotion(prefersReducedMotion);
     });
 
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => observer.disconnect();
+    return () => {
+      if ("cancelIdleCallback" in window && typeof handle === "number") {
+        window.cancelIdleCallback(handle);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const particleColor = "#9be8c2";
-
   return (
-    <div className="relative min-h-screen text-base-content font-sans overflow-hidden">
-      <ParticlesBackground color={particleColor} />
+    <div className="relative min-h-dvh bg-base-100 text-base-content font-sans">
+      <div className="bg-signal-layer" data-signal-layer aria-hidden="true" />
+      <div className="bg-blueprint" aria-hidden="true" />
 
-      <div className="relative">
-        <Header />
-        <main className="max-w-6xl mx-auto px-6 py-12 space-y-24">
-          <CareerHighlights />
-          <Projects />
-          <Skills />
-          <Certifications />
-          <Contact />
-        </main>
-      </div>
+      <Boot />
+      <HeroTopNav />
 
-      <Footer />
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-primary-content focus:px-4 focus:py-2 focus:rounded-field"
+      >
+        Pular para o conteúdo
+      </a>
 
-      {/* ChatBot dentro da div principal */}
+      <main id="conteudo" className="relative z-10">
+        <HeroCircuit />
+        <BootPanel />
+        <CareerSignal />
+        <ProjectsHorizontal />
+        <SkillsMatrix />
+        <CredentialsFan />
+        <ContactClose />
+      </main>
+
       <div className="fixed bottom-4 right-4 z-50">
         <ChatBot />
       </div>
     </div>
   );
 }
+
 export default App;

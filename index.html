@@ -14,6 +14,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Tipografia — self-hosted em /public/fonts, sem dependência de CDN externo.
+         Preload das fontes críticas para LCP (headline do Hero + corpo). -->
+    <link rel="preload" href="/fonts/ClashDisplay-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin />
+
     <!-- SEO Principal -->
     <title>Guilherme Martins | Desenvolvedor Fullstack | React, Node.js & Integrações</title>
 
